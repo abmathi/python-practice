@@ -35,10 +35,10 @@ def count_failed_logins(current_event, failed_dict):
     if current_event[3].upper() == "FAILED":
         failed_dict[current_event[2]] = failed_dict[current_event[2]] + 1
 
-### add users to dictionary
+### loop through the log and split
 for event in auth_log:
     split_event = event.split()
-    ### checks if event contains expected number of fields
+    ### checks if event is valid
     if validate_event(split_event):
          ### counts the failed logins
         count_failed_logins(split_event, failed_logins)
